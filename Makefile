@@ -15,7 +15,7 @@ clean:
 	git clean -xf
 
 upgrade:
-	git submodule --recursive foreach "git checkout master; git pull"
+	git submodule foreach --recursive "git checkout master; git pull"
 
 .git/modules:
 	git submodule init
