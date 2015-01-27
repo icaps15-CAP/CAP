@@ -7,10 +7,12 @@ Problems with Component Macros. In ICAPS2015]].
 
 Simply run =make= to make an executable binary =componen-planner=.
 Dependencies are automatically loaded except =git= and the [[http://www.fast-downward.org/ObtainingAndRunningFastDownward][dependencies of
-Fast Downward]].
+Fast Downward]], which is:
 
-For any trouble building the binary, contact me by email or in my skype
-accout ( guicho2.71828 ).
+:  sudo apt-get install mercurial g++ make python flex bison g++-multilib
+
+We do not support 32bit systems.
+For any trouble building the binary, contact me by email.
 
 * Running
 
