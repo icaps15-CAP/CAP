@@ -1,15 +1,15 @@
 [submodule "pddl.macro-action"]
 	path = pddl.macro-action
-	url = git@github.com:guicho271828/pddl.macro-action.git
+	url = https://github.com/guicho271828/pddl.macro-action.git
 [submodule "pddl.component-planner"]
 	path = pddl.component-planner
-	url = git@github.com:guicho271828/pddl.component-planner.git
+	url = https://github.com/guicho271828/pddl.component-planner.git
 [submodule "pddl.component-abstraction"]
 	path = pddl.component-abstraction
-	url = git@github.com:guicho271828/pddl.component-abstraction.git
+	url = https://github.com/guicho271828/pddl.component-abstraction.git
 [submodule "guicho-utilities"]
 	path = guicho-utilities
-	url = git@github.com:guicho271828/guicho-utilities.git
+	url = https://github.com/guicho271828/guicho-utilities.git
 [submodule "pddl"]
 	path = pddl
-	url = git@github.com:guicho271828/pddl.git
+	url = https://github.com/guicho271828/pddl.git
