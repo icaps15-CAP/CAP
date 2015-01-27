@@ -18,17 +18,23 @@ clean:
 	git submodule deinit -f */
 	rm -rf .git/modules
 
-upgrade: .git/modules
+upgrade: update
 	git pull
 	git submodule foreach --recursive "git checkout master; git pull"
 
-.git/modules:
+update:
 	git submodule init
 	git submodule update
 	git submodule foreach "git submodule init; git submodule update"
 
+downward:
+	hg clone "http://hg.fast-downward.org" downward
+
+# for initialization
+.git/modules: update
+
 quicklisp/local-projects/%: % .git/modules
-	ln -s ../../$< quicklisp/local-projects/
+	-ln -s ../../$< quicklisp/local-projects/
 
 $(sbcl_dir):
 	curl -L "http://downloads.sourceforge.net/project/sbcl/sbcl/$(sbcl_version)/sbcl-$(sbcl_version)-$(platform)-binary.tar.bz2" | bunzip2 | tar xvf -
@@ -40,6 +46,6 @@ quicklisp/setup.lisp: quicklisp.lisp
 	$(sbcl)	--load quicklisp.lisp \
 		--load local-install.lisp
 
-component-planner: .git/modules $(sbcl_dir) quicklisp/setup.lisp $(submodules)
+component-planner: .git/modules $(sbcl_dir) quicklisp/setup.lisp $(submodules) downward
 	$(sbcl) --load quicklisp/setup.lisp \
 		--load make-image.lisp "$@"

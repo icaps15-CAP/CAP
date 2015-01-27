@@ -3,6 +3,10 @@
 * Building
 
 Simply run =make= to make an executable binary =componen-planner=.
-Command line options are available by running =componen-planner= with
-no arguments.
+
+* Running
+
+Command line options are available by running =componen-planner= with no
+arguments.  For configurations that uses fast-downward as MainPlanner or
+ComponentPlanner, specify =FD_DIR= environment variable.
 
