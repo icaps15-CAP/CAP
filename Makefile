@@ -29,7 +29,7 @@ update:
 
 downward:
 	hg clone "http://hg.fast-downward.org" downward
-	cd downward/src/; ./build-all
+	cd downward/src/; ./build_all
 
 # for initialization
 .git/modules: update
