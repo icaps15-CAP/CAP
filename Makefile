@@ -19,7 +19,7 @@ upgrade:
 
 .git/modules:
 	git submodule init
-	git submodule update --depth 1
+	git submodule update
 
 $(sbcl_dir)/run-sbcl.sh:
 	curl -L "http://downloads.sourceforge.net/project/sbcl/sbcl/$(sbcl_version)/sbcl-$(sbcl_version)-$(platform)-binary.tar.bz2" | bunzip2 | tar xvf -
