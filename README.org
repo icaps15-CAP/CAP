@@ -1,8 +1,16 @@
 
+This is the source repository for destributing CAP, Component Abstraction
+Planner, in [[http://guicho271828.github.io/publications/icaps15-submission7.pdf][Asai, M.; Fukunaga, A: 2015. Solving Large Scale Planning
+Problems with Component Macros. In ICAPS2015]].
 
 * Building
 
 Simply run =make= to make an executable binary =componen-planner=.
+Dependencies are automatically loaded except =git= and the [[http://www.fast-downward.org/ObtainingAndRunningFastDownward][dependencies of
+Fast Downward]].
+
+For any trouble building the binary, contact me by email or in my skype
+accout ( guicho2.71828 ).
 
 * Running
 
