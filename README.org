@@ -1,0 +1,8 @@
+
+
+* Building
+
+Simply run =make= to make an executable binary =componen-planner=.
+Command line options are available by running =componen-planner= with
+no arguments.
+
