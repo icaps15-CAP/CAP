@@ -12,7 +12,8 @@ sbcl = $(sbcl_dir)/run-sbcl.sh
 
 all: component-planner
 clean:
-	git clean -xf
+	git clean -df
+	git submodule deinit */
 
 upgrade:
 	git submodule foreach --recursive "git checkout master; git pull"
@@ -20,6 +21,7 @@ upgrade:
 .git/modules:
 	git submodule init
 	git submodule update
+	git submodule foreach --recursive "git submodule update"
 
 $(sbcl_dir)/run-sbcl.sh:
 	curl -L "http://downloads.sourceforge.net/project/sbcl/sbcl/$(sbcl_version)/sbcl-$(sbcl_version)-$(platform)-binary.tar.bz2" | bunzip2 | tar xvf -
