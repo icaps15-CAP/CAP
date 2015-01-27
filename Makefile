@@ -6,6 +6,7 @@ sbcl_version = 1.2.7
 platform = x86-64-linux
 
 sbcl_dir = sbcl-$(sbcl_version)-$(platform)
+sbcl = $(sbcl_dir)/run-sbcl.sh
 
 .PHONY: copy refresh clean component-planner
 
@@ -13,18 +14,31 @@ all: component-planner
 clean:
 	git clean -xf
 
-update:
-	git submodule foreach "git checkout master; git pull"
+upgrade:
+	git submodule --recursive foreach "git checkout master; git pull"
 
-init:
+.git/modules:
 	git submodule init
-	git submodule update
-
-sbcl:
-	mkdir -p sbcl
+	git submodule update --depth 1
 
 $(sbcl_dir)/run-sbcl.sh:
 	curl -L "http://downloads.sourceforge.net/project/sbcl/sbcl/$(sbcl_version)/sbcl-$(sbcl_version)-$(platform)-binary.tar.bz2" | bunzip2 | tar xvf -
 
-component-planner: init $(sbcl_dir)/run-sbcl.sh
-	$(sbcl_dir)/run-sbcl.sh --dynamic-space-size $(small) --non-interactive --load make-image.lisp "$@"
+
+quicklisp.lisp: 
+	curl -L "http://beta.quicklisp.org/quicklisp.lisp" > quicklisp.lisp
+
+
+
+
+
+
+
+
+
+
+component-planner: .git/modules $(sbcl) quicklisp.lisp
+	$(sbcl) --dynamic-space-size $(small) --non-interactive \
+	  	--load quicklisp.lisp \
+	  	--load local-install.lisp
+		# --load make-image.lisp "$@"
