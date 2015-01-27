@@ -31,6 +31,7 @@ downward:
 	hg clone "http://hg.fast-downward.org" downward
 
 downward/src/validate: downward
+	which g++ || echo "You might have forgot installing the dependency of FD"
 	cd downward/src/; ./build_all
 
 # for initialization
