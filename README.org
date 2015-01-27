@@ -10,8 +10,13 @@ For any trouble building the binary, contact me by email.
 
 * Dependency
 
-Dependencies are automatically loaded except =git= and the [[http://www.fast-downward.org/ObtainingAndRunningFastDownward][dependencies of
-Fast Downward]], which is:
+Dependencies are automatically loaded except =git= and =cgroup-bin=.
+Restart is required after the installation (in order to make cgroups
+activated).
+
+:  sudo apt-get install git cgroup-bin
+
+Also, the [[http://www.fast-downward.org/ObtainingAndRunningFastDownward][dependencies of Fast Downward]] should be resolved. It is:
 
 :  sudo apt-get install mercurial g++ make python flex bison g++-multilib
 
