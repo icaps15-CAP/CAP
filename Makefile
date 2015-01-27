@@ -51,5 +51,4 @@ quicklisp/setup.lisp: quicklisp.lisp
 		--load local-install.lisp
 
 component-planner: .git/modules $(sbcl_dir) quicklisp/setup.lisp $(submodules) downward/src/validate
-	$(sbcl) --load quicklisp/setup.lisp \
-		--load make-image.lisp "$@"
+	FD_DIR=downward/ $(sbcl) --load quicklisp/setup.lisp --load make-image.lisp "$@"
