@@ -29,6 +29,8 @@ update:
 
 downward:
 	hg clone "http://hg.fast-downward.org" downward
+
+downward/src/validate: downward
 	cd downward/src/; ./build_all
 
 # for initialization
@@ -47,6 +49,6 @@ quicklisp/setup.lisp: quicklisp.lisp
 	$(sbcl)	--load quicklisp.lisp \
 		--load local-install.lisp
 
-component-planner: .git/modules $(sbcl_dir) quicklisp/setup.lisp $(submodules) downward
+component-planner: .git/modules $(sbcl_dir) quicklisp/setup.lisp $(submodules) downward/src/validate
 	$(sbcl) --load quicklisp/setup.lisp \
 		--load make-image.lisp "$@"
