@@ -18,5 +18,5 @@ Command line options are available by running =componen-planner= with no
 arguments.  For configurations that uses fast-downward as MainPlanner or
 ComponentPlanner, specify =FD_DIR= environment variable, which should be
 the absolute pathname of =downward= directory (which is automatically
-fetched and build by =make=).
+fetched and built by =make=).
 
