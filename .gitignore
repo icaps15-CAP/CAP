@@ -2,3 +2,7 @@
 *~
 #*
 /quicklisp.lisp
+src
+quicklisp
+downward
+sbcl*
