@@ -19,13 +19,13 @@ modules = \
 	planner-scripts
 
 git_url = git@github.com:guicho271828/$(1).git
-git_command = git clone --depth 50 $(call git_url,$(1));
+git_command = git clone --depth 10 $(call git_url,$(1));
 
 .PHONY: component-planner clean submodules
 
 all: component-planner
 clean:
-	git clean -xf
+	git clean -xdff
 
 component-planner: submodules downward/src/validate
 	FD_DIR=downward/ $(sbcl) --load quicklisp/setup.lisp --load make-image.lisp "$@"
