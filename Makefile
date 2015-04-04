@@ -46,7 +46,7 @@ src/%: src
 	-cd src ; $(call git_command,$(@F))
 
 quicklisp/local-projects/src: quicklisp/setup.lisp
-	ln -s -t quicklisp/local-projects/ ../../src
+	-ln -s -t quicklisp/local-projects/ ../../src
 
 # downward
 
@@ -63,7 +63,7 @@ downward/src/search/search: downward
 
 downward/src/validate: downward
 	$(MAKE) -C downward/src/VAL
-	ln -s -t downward/src downward/src/VAL/validate
+	-ln -s -t downward/src downward/src/VAL/validate
 
 # sbcl
 
