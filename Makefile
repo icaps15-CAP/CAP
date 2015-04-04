@@ -26,9 +26,16 @@ $(info $(module_dirs))
 git_url = git@github.com:guicho271828/$(1).git
 git_command = git clone -b $(submodule-branch) --depth 1 $(call git_url,$(1));
 
-.PHONY: component-planner clean submodules downward-all run-test
+.PHONY: component-planner clean submodules downward-all run-test concurrent sequencial
 
-all: component-planner test
+all: concurrent
+
+concurrent:
+	$(MAKE) -j $(shell cat /proc/cpuinfo | grep processor | wc -l) sequencial
+
+sequencial: component-planner test
+
+
 clean:
 	git clean -xdff
 
