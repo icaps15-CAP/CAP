@@ -5,6 +5,8 @@ small = 1900
 sbcl_version = 1.2.7
 platform = x86-64-linux
 
+submodule-branch = master
+
 ################################################################
 
 sbcl_dir = sbcl-$(sbcl_version)-$(platform)
@@ -22,7 +24,7 @@ module_dirs = $(foreach m,$(modules),src/$(m))
 $(info $(module_dirs))
 
 git_url = git@github.com:guicho271828/$(1).git
-git_command = git clone --depth 1 $(call git_url,$(1));
+git_command = git clone -b $(submodule-branch) --depth 1 $(call git_url,$(1));
 
 .PHONY: component-planner clean submodules downward-all
 
