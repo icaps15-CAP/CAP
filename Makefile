@@ -26,9 +26,9 @@ $(info $(module_dirs))
 git_url = git@github.com:guicho271828/$(1).git
 git_command = git clone -b $(submodule-branch) --depth 1 $(call git_url,$(1));
 
-.PHONY: component-planner clean submodules downward-all
+.PHONY: component-planner clean submodules downward-all run-test
 
-all: component-planner
+all: component-planner test
 clean:
 	git clean -xdff
 
@@ -75,10 +75,12 @@ $(sbcl_dir):
 quicklisp.lisp: 
 	curl -L "http://beta.quicklisp.org/quicklisp.lisp" > quicklisp.lisp
 
-quicklisp/setup.lisp: $(sbcl_dir) quicklisp.lisp
+quicklisp/setup.lisp: $(sbcl_dir) quicklisp.lisp local-install.lisp
 	$(sbcl)	--load quicklisp.lisp \
 		--load local-install.lisp
 
-# test:
-# 	tar xf test.tar.gz
-# 	./test.sh
+test: test.tar.gz
+	tar xf test.tar.gz
+
+run-test: test ./test.sh component-planner
+	./test.sh
