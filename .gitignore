@@ -6,3 +6,4 @@ src
 quicklisp
 downward
 sbcl*
+/test/

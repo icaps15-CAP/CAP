@@ -85,8 +85,8 @@ quicklisp/setup.lisp: $(sbcl_dir) quicklisp.lisp local-install.lisp
 		--load local-install.lisp
 	ln -s -t quicklisp/local-projects/ ../../src
 
-test: test.tar.gz
-	tar xf test.tar.gz
+test:
+	-git clone git@github.com:guicho271828/ipc2011-clean.git test
 
 run-test: test ./test.sh concurrent
 	./test.sh
