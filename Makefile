@@ -20,20 +20,20 @@ modules = \
 	pddl \
 	planner-scripts
 
-module_heads = $(foreach m,$(modules),src/$(m)/.git/HEAD)
+module_heads = $(foreach m,$(modules),src/$(m)/.git)
 $(info $(module_dirs))
 
 git_url = git@github.com:guicho271828/$(1).git
 git_command = git clone -b $(submodule-branch) --depth 5 $(call git_url,$(1));
 
-.PHONY: component-planner clean submodules downward-all run-test concurrent sequencial
+.PHONY: clean downward-all run-test concurrent sequencial
 
 all: concurrent
 
 concurrent:
 	$(MAKE) -j $(shell cat /proc/cpuinfo | grep processor | wc -l) sequencial
 
-sequencial: component-planner test
+sequencial: component-planner test downward-all
 
 
 clean:
@@ -42,19 +42,17 @@ clean:
 	$(MAKE) -C downward/src/search clean
 	$(MAKE) -C downward/src/VAL clean
 
-component-planner: submodules downward-all quicklisp/setup.lisp make-image.lisp
+component-planner: $(module_heads) quicklisp/local-projects/src quicklisp/setup.lisp make-image.lisp
 	$(sbcl) --load quicklisp/setup.lisp --load make-image.lisp "$@"
 
 %: Makefile
 
-# modules
-
-submodules: $(module_heads) quicklisp/local-projects/src
+# submodules
 
 src:
 	mkdir -p src
 
-src/%/.git/HEAD: src
+src/%/.git: src
 	-cd src ; $(call git_command,$(*F))
 
 quicklisp/local-projects/src: quicklisp/setup.lisp
@@ -94,5 +92,5 @@ quicklisp/setup.lisp: $(sbcl_dir) quicklisp.lisp local-install.lisp
 test: test.tar.gz
 	tar xf test.tar.gz
 
-run-test: test ./test.sh component-planner
+run-test: test ./test.sh concurrent
 	./test.sh
