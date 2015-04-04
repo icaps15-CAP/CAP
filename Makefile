@@ -42,7 +42,7 @@ clean:
 	$(MAKE) -C downward/src/search clean
 	$(MAKE) -C downward/src/VAL clean
 
-component-planner: $(module_heads) quicklisp/setup.lisp make-image.lisp
+component-planner: $(module_heads) quicklisp/setup.lisp make-image.lisp $(shell find src -regex ".*.\(lisp\|asd\)")
 	$(sbcl) --load quicklisp/setup.lisp --load make-image.lisp "$@"
 
 %: Makefile
