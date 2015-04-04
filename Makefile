@@ -24,7 +24,7 @@ module_heads = $(foreach m,$(modules),src/$(m)/.git/HEAD)
 $(info $(module_dirs))
 
 git_url = git@github.com:guicho271828/$(1).git
-git_command = git clone -b $(submodule-branch) --depth 1 $(call git_url,$(1));
+git_command = git clone -b $(submodule-branch) --depth 5 $(call git_url,$(1));
 
 .PHONY: component-planner clean submodules downward-all run-test concurrent sequencial
 
