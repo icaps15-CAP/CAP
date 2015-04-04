@@ -42,7 +42,7 @@ clean:
 	$(MAKE) -C downward/src/search clean
 	$(MAKE) -C downward/src/VAL clean
 
-component-planner: $(module_heads) quicklisp/local-projects/src quicklisp/setup.lisp make-image.lisp
+component-planner: $(module_heads) quicklisp/setup.lisp make-image.lisp
 	$(sbcl) --load quicklisp/setup.lisp --load make-image.lisp "$@"
 
 %: Makefile
@@ -52,9 +52,6 @@ component-planner: $(module_heads) quicklisp/local-projects/src quicklisp/setup.
 src/%/.git/HEAD:
 	mkdir -p src
 	-cd src ; $(call git_command,$(*F))
-
-quicklisp/local-projects/src: quicklisp/setup.lisp
-	-ln -s -t quicklisp/local-projects/ ../../src
 
 # downward
 
@@ -86,6 +83,7 @@ quicklisp.lisp:
 quicklisp/setup.lisp: $(sbcl_dir) quicklisp.lisp local-install.lisp
 	$(sbcl)	--load quicklisp.lisp \
 		--load local-install.lisp
+	ln -s -t quicklisp/local-projects/ ../../src
 
 test: test.tar.gz
 	tar xf test.tar.gz
