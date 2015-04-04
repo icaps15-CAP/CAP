@@ -37,7 +37,10 @@ sequencial: component-planner test
 
 
 clean:
-	git clean -xdff
+	git clean -xdff -e downward
+	$(MAKE) -C downward/src/preprocess clean
+	$(MAKE) -C downward/src/search clean
+	$(MAKE) -C downward/src/VAL clean
 
 component-planner: submodules downward-all quicklisp/setup.lisp make-image.lisp
 	$(sbcl) --load quicklisp/setup.lisp --load make-image.lisp "$@"
