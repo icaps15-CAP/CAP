@@ -1,3 +1,4 @@
+sudo: required
 language: lisp
 
 before_install:
