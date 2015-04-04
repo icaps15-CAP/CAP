@@ -33,7 +33,7 @@ clean:
 	git clean -xdff
 
 component-planner: submodules downward-all quicklisp/setup.lisp make-image.lisp
-	FD_DIR=downward/ $(sbcl) --load quicklisp/setup.lisp --load make-image.lisp "$@"
+	$(sbcl) --load quicklisp/setup.lisp --load make-image.lisp "$@"
 
 # modules
 
