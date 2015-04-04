@@ -42,6 +42,8 @@ clean:
 component-planner: submodules downward-all quicklisp/setup.lisp make-image.lisp
 	$(sbcl) --load quicklisp/setup.lisp --load make-image.lisp "$@"
 
+%: Makefile
+
 # modules
 
 submodules: $(module_heads) quicklisp/local-projects/src
