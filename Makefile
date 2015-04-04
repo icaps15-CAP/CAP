@@ -20,7 +20,7 @@ modules = \
 	pddl \
 	planner-scripts
 
-module_heads = $(foreach m,$(modules),src/$(m)/.git)
+module_heads = $(foreach m,$(modules),src/$(m)/.git/HEAD)
 $(info $(module_dirs))
 
 git_url = git@github.com:guicho271828/$(1).git
@@ -49,10 +49,8 @@ component-planner: $(module_heads) quicklisp/local-projects/src quicklisp/setup.
 
 # submodules
 
-src:
+src/%/.git/HEAD:
 	mkdir -p src
-
-src/%/.git: src
 	-cd src ; $(call git_command,$(*F))
 
 quicklisp/local-projects/src: quicklisp/setup.lisp
