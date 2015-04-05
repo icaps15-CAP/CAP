@@ -20,8 +20,7 @@ modules = \
 	pddl \
 	planner-scripts
 
-module_heads = $(foreach m,$(modules),src/$(m)/.git/HEAD)
-$(info $(module_dirs))
+module_heads = $(foreach m,$(modules),src/$(m))
 
 git_url = git@github.com:guicho271828/$(1).git
 git_command = git clone -b $(submodule-branch) --depth 5 $(call git_url,$(1));
@@ -49,9 +48,10 @@ component-planner: $(module_heads) libfixposix quicklisp/setup.lisp make-image.l
 
 # submodules
 
-src/%/.git/HEAD:
+src/%:
 	mkdir -p src
 	-cd src ; $(call git_command,$(*F))
+	-cd src/$(*F) ; git pull
 
 # downward
 
