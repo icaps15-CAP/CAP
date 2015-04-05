@@ -42,7 +42,7 @@ clean:
 	$(MAKE) -C downward/src/search clean
 	$(MAKE) -C downward/src/VAL clean
 
-component-planner: $(module_heads) quicklisp/setup.lisp make-image.lisp $(shell find src -regex ".*.\(lisp\|asd\)")
+component-planner: $(module_heads) libfixposix quicklisp/setup.lisp make-image.lisp $(shell find src -regex ".*.\(lisp\|asd\)")
 	$(sbcl) --load quicklisp/setup.lisp --load make-image.lisp "$@"
 
 %: Makefile
@@ -89,7 +89,7 @@ quicklisp/setup.lisp: $(sbcl_dir) quicklisp.lisp local-install.lisp
 
 libfixposix: install-lfp.sh
 	git clone https://github.com/sionescu/libfixposix.git
-	cd libfixposix ; ./install-lfp.sh
+	./install-lfp.sh libfixposix
 
 # tests
 
