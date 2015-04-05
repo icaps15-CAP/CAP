@@ -44,6 +44,11 @@ clean:
 	$(MAKE) -C downward/src/search clean
 	$(MAKE) -C downward/src/VAL clean
 
+LFP=$(shell readlink -ef libfixposix/)
+
+export CPATH = $(LFP)/src/include:$(LFP)/src/lib:$(LFP)/build/src/include
+$(info CPATH = $(CPATH))
+
 component-planner: $(module_heads) libfixposix quicklisp/setup.lisp make-image.lisp $(shell find src -regex ".*.\(lisp\|asd\)")
 	$(sbcl) --load quicklisp/setup.lisp --load make-image.lisp "$@"
 
