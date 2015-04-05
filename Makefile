@@ -27,6 +27,10 @@ git_command = git clone -b $(submodule-branch) --depth 5 $(call git_url,$(1));
 
 .PHONY: clean downward-all run-test concurrent sequencial
 
+deps:
+	echo "call this with sudo"
+	apt-get install -y git cgroup-bin mercurial g++ make python flex bison g++-multilib ia32-libs libtool
+
 all: concurrent
 
 concurrent:
