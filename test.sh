@@ -13,7 +13,7 @@ export FD_DIR=$(dirname $(readlink -ef $0))/downward
 
     # --debug-preprocessing \
 
-lama2011="$(cat <<EOF
+lama2011="
 --search-options
 --if-unit-cost
 --heuristic hlm,hff=lm_ff_syn(lm_rhw(reasonable_orders=true))
@@ -21,10 +21,7 @@ lama2011="$(cat <<EOF
 --if-non-unit-cost
 --heuristic hlm1,hff1=lm_ff_syn(lm_rhw(reasonable_orders=true,lm_cost_type=one,cost_type=one))
 --search lazy_greedy([hff1,hlm1],preferred=[hff1,hlm1],cost_type=one,reopen_closed=false)
---always
-EOF
-)"
-
+--always"
 
 for p in 01 #02 03 04 05
 do
