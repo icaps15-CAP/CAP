@@ -6,3 +6,5 @@ src
 quicklisp
 downward
 sbcl*
+/test/
+/libfixposix/
