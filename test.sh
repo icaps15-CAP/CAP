@@ -23,6 +23,9 @@ lama2011="
 --search lazy_greedy([hff1,hlm1],preferred=[hff1,hlm1],cost_type=one,reopen_closed=false)
 --always"
 
+
+            # --debug-preprocessing \
+
 for p in 01 #02 03 04 05
 do
     for d in test/*/
@@ -64,3 +67,6 @@ done
 #     --default \
 #     --both-search marvin2-clean - \
 #     -t 60 -m 2000000 test/assembly-mixed/p20.pddl
+
+
+echo "---------------- ALL TESTS PASSED! ----------------"
