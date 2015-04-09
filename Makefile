@@ -26,7 +26,7 @@ module_heads = $(foreach m,$(modules),src/$(m))
 git_url = git@github.com:guicho271828/$(1).git
 git_command = git clone -b $(submodule-branch) --depth 5 $(call git_url,$(1));
 
-.PHONY: clean downward-all run-test concurrent sequencial deps
+.PHONY: clean downward-all run-test concurrent sequencial deps src/%
 
 all: concurrent
 
