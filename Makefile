@@ -77,7 +77,7 @@ downward/src/search/search: downward
 
 downward/src/validate: downward
 	$(MAKE) -C downward/src/VAL
-	-ln -s -t downward/src downward/src/VAL/validate
+	-ln -s -t downward/src VAL/validate
 
 # sbcl
 
