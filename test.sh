@@ -36,6 +36,7 @@ do
         ./component-planner \
             --dynamic-space-size 2000 --default -t 60 -m 500000 \
             --both-search fd-clean "$lama2011" \
+            --validation \
              $MORE_OPTIONS $d/p$p.pddl || exit 1
     done
 done
