@@ -2,6 +2,9 @@
 
 export FD_DIR=$(dirname $(readlink -ef $0))/downward
 
+MORE_OPTIONS=$1
+# e.g. --cyclic-macros, --compatibility, --binarization
+
 #### iterated
 # ./component-planner \
 #     --dynamic-space-size 2000 \
@@ -31,9 +34,9 @@ do
     for d in test/*/
     do
         ./component-planner \
-            --dynamic-space-size 2000 \
-            --default --both-search fd-clean "$lama2011" \
-            -t 60 -m 500000 $d/p$p.pddl || exit 1
+            --dynamic-space-size 2000 --default -t 60 -m 500000 \
+            --both-search fd-clean "$lama2011" \
+             $MORE_OPTIONS $d/p$p.pddl || exit 1
     done
 done
 
@@ -65,6 +68,8 @@ done
 # ./component-planner \
 #     --dynamic-space-size 2000 \
 #     --default \
+#     --remove-component-problem-cost \
+#     --remove-main-problem-cost \
 #     --both-search marvin2-clean - \
 #     -t 60 -m 2000000 test/assembly-mixed/p20.pddl
 
