@@ -26,7 +26,7 @@ module_heads = $(foreach m,$(modules),src/$(m))
 git_url = https://github.com/guicho271828/$(1).git
 git_command = git clone -b $(submodule-branch) --depth 5 $(call git_url,$(1));
 
-.PHONY: clean downward-all run-test concurrent sequencial deps
+.PHONY: clean downward-all run-test concurrent sequencial deps src/%
 
 all: concurrent
 
@@ -77,7 +77,7 @@ downward/src/search/search: downward
 
 downward/src/validate: downward
 	$(MAKE) -C downward/src/VAL
-	-ln -s -t downward/src downward/src/VAL/validate
+	-ln -s -t downward/src VAL/validate
 
 # sbcl
 
