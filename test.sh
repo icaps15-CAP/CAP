@@ -2,7 +2,7 @@
 
 export FD_DIR=$(dirname $(readlink -ef $0))/downward
 
-MORE_OPTIONS=$1
+MORE_OPTIONS=$@
 # e.g. --cyclic-macros, --compatibility, --binarization
 
 #### iterated
