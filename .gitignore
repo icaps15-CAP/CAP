@@ -8,3 +8,4 @@ downward
 sbcl*
 /test/
 /libfixposix/
+*.log
