@@ -73,6 +73,7 @@ downward/src/preprocess/preprocess: downward
 	$(MAKE) -C downward/src/preprocess
 
 downward/src/search/search: downward
+	cd downward/src/search ; git pull
 	$(MAKE) -C downward/src/search
 
 downward/src/validate: downward
