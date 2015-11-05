@@ -1,6 +1,5 @@
 
 (ql:register-local-projects)
-(push :add-cost *features*)
 (push :interpret-pddl *features*)
 (ql:quickload :cffi)
 (let ((lfp (merge-pathnames "libfixposix/build/src/lib/.libs/")))

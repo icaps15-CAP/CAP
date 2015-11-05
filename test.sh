@@ -1,78 +1,33 @@
 #!/bin/bash
+# -*- truncate-lines : t -*-
 
 export FD_DIR=$(dirname $(readlink -ef $0))/downward
 
-MORE_OPTIONS=$1
-# e.g. --cyclic-macros, --compatibility, --binarization
-
-#### iterated
-# ./component-planner \
-#     --dynamic-space-size 2000 \
-#     --debug-preprocessing \
-#     --default --both-search fd-clean "--alias seq-sat-lama-2011" \
-#     -t 15 -m 500000 test/assembly-mixed/p20.pddl
+MORE_OPTIONS=$@
+capdir=$(dirname $(readlink -ef $0))
 
 #### lama 1st iteration
 
-    # --debug-preprocessing \
+export lama2011="--search-options --if-unit-cost --heuristic hlm,hff=lm_ff_syn(lm_rhw(reasonable_orders=true)) --search lazy_greedy([hff,hlm],preferred=[hff,hlm]) --if-non-unit-cost --heuristic hlm1,hff1=lm_ff_syn(lm_rhw(reasonable_orders=true,lm_cost_type=one,cost_type=one)) --search lazy_greedy([hff1,hlm1],preferred=[hff1,hlm1],cost_type=one,reopen_closed=false) --always"
 
-lama2011="
---search-options
---if-unit-cost
---heuristic hlm,hff=lm_ff_syn(lm_rhw(reasonable_orders=true))
---search lazy_greedy([hff,hlm],preferred=[hff,hlm])
---if-non-unit-cost
---heuristic hlm1,hff1=lm_ff_syn(lm_rhw(reasonable_orders=true,lm_cost_type=one,cost_type=one))
---search lazy_greedy([hff1,hlm1],preferred=[hff1,hlm1],cost_type=one,reopen_closed=false)
---always"
+export ff="--both-search ff-clean - --remove-component-problem-cost --remove-main-problem-cost"
+export fd="--add-macro-cost --both-search fd-clean $lama2011 -"
+export pr='--add-macro-cost --both-search probe-clean -'
+export cea='--both-search fd-clean --search-options --search lazy_greedy(cea()) -'
+export mv='--both-search marvin2-clean - --remove-component-problem-cost --remove-main-problem-cost'
 
+rm -r /tmp/lisptmp /tmp/captest /tmp/newtmp
 
-            # --debug-preprocessing \
+# gnu parallel
+parallel $MORE_OPTIONS --joblog test.log \
+    ./runtest.sh \
+    ::: 01 \
+    ::: $capdir/test/*/ \
+    ::: --cyclic-macros --compatibility \
+    ::: "$fd"
 
-for p in 01 #02 03 04 05
-do
-    for d in test/*/
-    do
-        ./component-planner \
-            --dynamic-space-size 2000 --default -t 60 -m 500000 \
-            --both-search fd-clean "$lama2011" \
-            --validation \
-             $MORE_OPTIONS $d/p$p.pddl || exit 1
-    done
-done
-
+# --force-single-node-components --force-variable-factoring --compatibility
 # to use the other planners, see src/planner-scripts
 
-## with ff
-# ./component-planner \
-#     --dynamic-space-size 2000 \
-#     --remove-component-problem-cost \
-#     --remove-main-problem-cost \
-#     --default --both-search ff-clean - \
-#     -t 60 -m 2000000 test/assembly-mixed/p20.pddl
 
-## with cea
-# ./component-planner \
-#     --dynamic-space-size 2000 \
-#     --default \
-#     --both-search fd-clean "--search-options --search lazy_greedy(cea())" \
-#     -t 60 -m 2000000 test/assembly-mixed/p20.pddl
-
-## with probe
-# ./component-planner \
-#     --dynamic-space-size 2000 \
-#     --default \
-#     --both-search probe-clean - \
-#     -t 60 -m 2000000 test/assembly-mixed/p20.pddl
-
-## with marvin
-# ./component-planner \
-#     --dynamic-space-size 2000 \
-#     --default \
-#     --remove-component-problem-cost \
-#     --remove-main-problem-cost \
-#     --both-search marvin2-clean - \
-#     -t 60 -m 2000000 test/assembly-mixed/p20.pddl
-
-
-echo "---------------- ALL TESTS PASSED! ----------------"
+    # "$ff" "$fd" "$pr" \
