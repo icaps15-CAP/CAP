@@ -66,7 +66,7 @@ src/%:
 downward-all: downward/src/preprocess/preprocess downward/src/search/search downward/src/validate
 
 downward:
-	hg clone "http://hg.fast-downward.org" downward
+	hg clone -r 6251 "http://hg.fast-downward.org" downward
 
 downward/src/preprocess/preprocess: downward
 	$(MAKE) -C downward/src/preprocess
