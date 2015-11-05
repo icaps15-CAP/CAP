@@ -13,7 +13,6 @@ sbcl_dir = sbcl-$(sbcl_version)-$(platform)
 sbcl = $(sbcl_dir)/run-sbcl.sh --dynamic-space-size $(small) --non-interactive --no-userinit
 
 modules = \
-	eazy-process \
 	guicho-utilities \
 	pddl.component-abstraction \
 	pddl.component-planner \
