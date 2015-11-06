@@ -5,7 +5,7 @@ small = 1900
 sbcl_version = 1.2.7
 platform = x86-64-linux
 
-submodule-branch = develop
+submodule-branch = master
 
 ################################################################
 
