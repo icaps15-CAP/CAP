@@ -103,7 +103,7 @@ libfixposix: install-lfp.sh
 # tests
 
 test:
-	-git clone https://github.com/guicho271828/ipc2011-clean.git test
+	-git clone --depth=1 https://github.com/guicho271828/ipc2011-clean.git test
 
 run-test: test ./test.sh concurrent
 	./test.sh
