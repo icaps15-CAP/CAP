@@ -1,4 +1,4 @@
-
+(require :sb-cltl2)
 (ql:register-local-projects)
 (push :interpret-pddl *features*)
 (ql:quickload :cffi)

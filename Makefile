@@ -90,9 +90,8 @@ quicklisp.lisp:
 	curl -L "http://beta.quicklisp.org/quicklisp.lisp" > quicklisp.lisp
 
 quicklisp/setup.lisp: $(sbcl_dir) quicklisp.lisp local-install.lisp
-	$(sbcl)	--load quicklisp.lisp \
-		--load local-install.lisp
-	ln -s -t quicklisp/local-projects/ ../../src
+	-$(sbcl) --load quicklisp.lisp --load local-install.lisp
+	-ln -s -t quicklisp/local-projects/ ../../src
 
 # lfp
 
