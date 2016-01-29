@@ -16,35 +16,20 @@ export pr='--add-macro-cost --both-search probe-clean -'
 export cea='--both-search fd-clean --search-options --search lazy_greedy(cea()) -'
 export mv='--both-search marvin2-clean - --remove-component-problem-cost --remove-main-problem-cost'
 
-export yhfd="--add-macro-cost --preprocessor yahsp3-clean - --main-search fd-clean $lama2011 -"
-
-export yh="--add-macro-cost --both-search yahsp3-clean -"
-
-export yhar="--add-macro-cost --preprocessor yahsp3-clean - --main-search arvandherd-clean -"
-export yhib="--add-macro-cost --preprocessor yahsp3-clean - --main-search ibacop-clean -"
-
-
 rm -r /tmp/lisptmp /tmp/captest /tmp/newtmp
-
-if ! [ -e /sys/fs/cgroup/cpu/$(whoami) ]
-then
-    sudo ./cgroup-setup $(whoami)
-fi
-
-echo "results goes to /tmp/captest/"
 
 # gnu parallel
 parallel $MORE_OPTIONS --joblog test.log \
     ./runtest.sh \
-    ::: 01 \
-    ::: $capdir/test/*/ \
+    ::: 01 02 \
+    ::: $capdir/unsolvable/*/ \
     ::: "$fd"
 
-#  --ipc-threads
+    # ::: --compatibility \
+
+
 # --force-single-node-components --force-variable-factoring --compatibility
 # to use the other planners, see src/planner-scripts
 
-# "--threads 4"
 
     # "$ff" "$fd" "$pr" \
-# "" --iterative-resource "--ipc-threads"

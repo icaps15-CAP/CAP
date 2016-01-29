@@ -1,0 +1,33 @@
+[submodule "guicho-utilities"]
+	path = guicho-utilities
+	url = git@github.com:guicho271828/guicho-utilities.git
+	branch = master
+        update = rebase
+[submodule "pddl.macro-action"]
+	path = pddl.macro-action
+	url = git@github.com:guicho271828/pddl.macro-action.git
+	branch = master
+        update = rebase
+[submodule "pddl"]
+	path = pddl
+	url = git@github.com:guicho271828/pddl.git
+	branch = master
+        update = rebase
+[submodule "planner-scripts"]
+	path = planner-scripts
+	url = git@github.com:guicho271828/planner-scripts.git
+	branch = master
+        update = rebase
+[submodule "downward"]
+	path = downward
+	url = git@github.com:guicho271828/downward-fixed-build.git
+	branch = master
+        update = rebase
+[submodule "pddl.component-planner"]
+	path = pddl.component-planner
+	url = git@github.com:guicho271828/pddl.component-planner.git
+        update = rebase
+[submodule "pddl.component-abstraction"]
+	path = pddl.component-abstraction
+	url = git@github.com:guicho271828/pddl.component-abstraction.git
+        update = rebase
