@@ -1,11 +1,6 @@
 /component-planner
 *~
 #*
-/quicklisp.lisp
 src
-quicklisp
-downward
-sbcl*
 /test/
-/libfixposix/
 *.log
