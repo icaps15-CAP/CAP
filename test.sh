@@ -28,7 +28,7 @@ rm -r /tmp/lisptmp /tmp/captest /tmp/newtmp
 
 if ! [ -e /sys/fs/cgroup/cpu/$(whoami) ]
 then
-    sudo cgroup-setup $(whoami)
+    sudo ./cgroup-setup $(whoami)
 fi
 
 # gnu parallel
