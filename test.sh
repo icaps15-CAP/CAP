@@ -31,6 +31,8 @@ then
     sudo ./cgroup-setup $(whoami)
 fi
 
+echo "results goes to /tmp/captest/"
+
 # gnu parallel
 parallel $MORE_OPTIONS --joblog test.log \
     ./runtest.sh \
