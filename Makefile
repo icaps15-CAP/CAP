@@ -13,7 +13,7 @@ submodules: .git/modules
 	git submodule update --init --recursive --remote
 
 component-planner: $(shell find -name "*.lisp") submodules
-	ros dynamic-space-size=16000 -- -e "(setf ql:*local-project-directories* '(#p\"$(CURDIR)/\"))(ql:register-local-projects)" dump executable ./cap.ros
+	ros dynamic-space-size=16000 -- -e "(setf ql:*local-project-directories* '(#p\"$(CURDIR)/\"))(ql:register-local-projects)" dump executable ./component-planner.ros
 # make-image.lisp
 
 clean:
