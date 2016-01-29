@@ -35,9 +35,9 @@ fi
 parallel $MORE_OPTIONS --joblog test.log \
     ./runtest.sh \
     ::: 01 \
-    ::: $capdir/test2/*/ \
-    ::: "--ipc-threads --cfs" \
+    ::: $capdir/test/*/ \
     ::: "$fd"
+
 #  --ipc-threads
 # --force-single-node-components --force-variable-factoring --compatibility
 # to use the other planners, see src/planner-scripts

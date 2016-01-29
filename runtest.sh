@@ -20,7 +20,6 @@ cd $tmpdir
 echo "-*- truncate-lines : t -*-" > log
 echo "-*- truncate-lines : t -*-" > err
 cgexec -g cpu,cpuacct,memory:/$(whoami)/$$ /usr/bin/time $capdir/component-planner \
-    --dynamic-space-size 2000 \
     -t 1800 -m 1000000 --preprocess-limit 900 \
      -v --validation \
     $options $dir/p$prob.pddl >> log 2>> err
