@@ -1,0 +1,8 @@
+#!/bin/sh
+#|-*- mode:lisp -*-|#
+#|
+exec ros -Q -- $0 "$@"
+|#
+(push :interpret-pddl *features*)
+(ql:quickload :pddl.component-planner)
+(in-package :pddl.component-planner.experiment)
