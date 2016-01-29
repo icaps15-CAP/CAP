@@ -26,3 +26,8 @@
 [submodule "pddl.component-planner"]
 	path = pddl.component-planner
 	url = git@github.com:guicho271828/pddl.component-planner.git
+        update = rebase
+[submodule "pddl.component-abstraction"]
+	path = pddl.component-abstraction
+	url = git@github.com:guicho271828/pddl.component-abstraction.git
+        update = rebase
