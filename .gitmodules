@@ -23,3 +23,6 @@
 	url = git@github.com:guicho271828/downward-fixed-build.git
 	branch = master
         update = rebase
+[submodule "pddl.component-planner"]
+	path = pddl.component-planner
+	url = git@github.com:guicho271828/pddl.component-planner.git
