@@ -6,13 +6,12 @@ Problems with Component Macros. In ICAPS2015]].
 * Building
 
 Simply run =make= to make an executable binary =componen-planner=.
-For any trouble building the binary, contact me by email.
 
 * Dependency
 
-Dependencies are automatically loaded except =cgroup-bin= and =libffi=.
-Restart is required after the installation (in order to make cgroups
-activated).
++ https://github.com/roswell/roswell
++ =cgroup-bin= Restart is required after the installation (in order to make cgroups activated).
++ =libffi=
 
 :  sudo apt-get install cgroup-bin libffi-dev git make autoconf build-essential libtool libglib2.0-dev 
 
@@ -29,15 +28,11 @@ install the 32bit library. The list is not comprehensive.
 * Running
 
 Command line options are available by running =componen-planner= with no
-arguments.  For configurations that uses fast-downward as MainPlanner or
-ComponentPlanner, specify =FD_DIR= environment variable, which should be
-the absolute pathname of =downward= directory (which is automatically
-fetched and built by =make=).
+arguments.
 
 * Testing
 
 Test instances are in test.tar.gz, so unpack it accordingly.
 
-test.sh is a simple shell script that tests if the binary works correctly
+test.sh is a +simple+ shell script that tests if the binary works correctly
 on a small problem set.
-

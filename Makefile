@@ -6,7 +6,10 @@ all: component-planner
 deps:
 	apt-get install -y git cgroup-bin mercurial g++ make python flex bison g++-multilib ia32-libs libtool
 
-submodules:
+.git/modules:
+	git submodule sync
+
+submodules: .git/modules
 	git submodule update --init --recursive --remote
 
 component-planner: $(shell find -name "*.lisp") submodules
