@@ -26,7 +26,7 @@ git_url = git@github.com:guicho271828/$(1).git
 # git_url = https://github.com/guicho271828/$(1).git
 git_command = git clone -b $(submodule-branch) --depth 5 $(call git_url,$(1));
 
-.PHONY: clean downward-all run-test concurrent sequencial deps src/%
+.PHONY: clean run-test concurrent sequencial deps src/%
 
 all: concurrent
 
@@ -36,8 +36,7 @@ deps:
 concurrent:
 	$(MAKE) -j $(shell cat /proc/cpuinfo | grep processor | wc -l) sequencial
 
-sequencial: component-planner test downward-all
-
+sequencial: component-planner test downward
 
 clean:
 	git clean -xdff -e downward
@@ -64,20 +63,8 @@ src/%:
 
 # downward
 
-downward-all: downward/src/preprocess/preprocess downward/src/search/search downward/src/validate
-
 downward:
-	hg clone -r 6251 "http://hg.fast-downward.org" downward
-
-downward/src/preprocess/preprocess: downward
-	$(MAKE) -C downward/src/preprocess
-
-downward/src/search/search: downward
-	$(MAKE) -C downward/src/search
-
-downward/src/validate: downward
-	$(MAKE) -C downward/src/VAL
-	-ln -s -t downward/src VAL/validate
+	git clone git@github.com:guicho271828/downward-fixed-build.git downward
 
 # sbcl
 
