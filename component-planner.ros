@@ -5,4 +5,5 @@ exec ros -Q -- $0 "$@"
 |#
 (push :interpret-pddl *features*)
 (ql:quickload :pddl.component-planner)
+(setf (sb-ext:bytes-consed-between-gcs) 100000000)
 (in-package :pddl.component-planner.experiment)
