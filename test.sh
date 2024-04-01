@@ -26,11 +26,6 @@ export yhib="--add-macro-cost --preprocessor yahsp3-clean - --main-search ibacop
 
 rm -r /tmp/lisptmp /tmp/captest /tmp/newtmp
 
-if ! [ -e /sys/fs/cgroup/cpu/$(whoami) ]
-then
-    sudo ./cgroup-setup $(whoami)
-fi
-
 echo "results goes to /tmp/captest/"
 
 # gnu parallel
