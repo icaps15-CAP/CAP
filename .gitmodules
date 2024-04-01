@@ -20,8 +20,8 @@
         update = rebase
 [submodule "downward"]
 	path = downward
-	url = git@github.com:guicho271828/downward-fixed-build.git
-	branch = master
+	url = https://github.com/aibasel/downward.git
+	branch = release-23.06.0
         update = rebase
 [submodule "pddl.component-planner"]
 	path = pddl.component-planner
