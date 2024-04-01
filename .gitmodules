@@ -31,3 +31,6 @@
 	path = pddl.component-abstraction
 	url = git@github.com:guicho271828/pddl.component-abstraction.git
         update = rebase
+[submodule "test"]
+	path = test
+	url = https://github.com/guicho271828/ipc2011-clean.git

@@ -15,9 +15,3 @@ component-planner: $(shell find -name "*.lisp") component-planner.ros downward/b
 
 clean:
 	rm component-planner
-
-test:
-	-git clone --depth=1 https://github.com/guicho271828/ipc2011-clean.git test
-
-run-test: test ./test.sh component-planner
-	./test.sh
