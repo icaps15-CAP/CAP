@@ -33,7 +33,7 @@ parallel $MORE_OPTIONS --joblog test.log \
     ./runtest.sh \
     ::: 01 \
     ::: $capdir/test/*/ \
-    ::: "$fd"
+    ::: "$ff"
 
 #  --ipc-threads
 # --force-single-node-components --force-variable-factoring --compatibility
