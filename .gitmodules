@@ -21,7 +21,6 @@
 [submodule "downward"]
 	path = downward
 	url = https://github.com/aibasel/downward.git
-	branch = release-23.06.0
         update = rebase
 [submodule "pddl.component-planner"]
 	path = pddl.component-planner
@@ -34,3 +33,4 @@
 [submodule "test"]
 	path = test
 	url = https://github.com/guicho271828/ipc2011-clean.git
+        shallow = true
